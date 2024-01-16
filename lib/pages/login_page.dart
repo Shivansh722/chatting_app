@@ -1,18 +1,34 @@
+import 'package:chat/services/authentication/auth_service.dart';
 import 'package:chat/components/my_button.dart';
 import 'package:chat/components/my_textfield.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-   LoginPage({super.key, required this.onTap});
+  LoginPage({Key? key, required this.onTap}) : super(key: key);
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  //tap to go to register
+  // Tap to go to register
   final void Function()? onTap;
 
-  void login() {
-   
+  void login(BuildContext context) async {
+    final authService = AuthService();
+
+    // Try login
+    try {
+      await authService.signInWithEmailAndPassword(_emailController.text, _passwordController.text);
+    }
+      // Show error
+       catch (e) {
+        print(e);
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
   }
 
   @override
@@ -40,29 +56,30 @@ class LoginPage extends StatelessWidget {
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),
-            
+
             const SizedBox(height: 25),
 
             // Email field
             MyTextField(
               hintText: "Email",
-              controller : _emailController,
+              controller: _emailController,
             ),
-            
+
             const SizedBox(height: 12),
 
             // Password field
             MyTextField(
               hintText: "Password",
-              controller : _passwordController,
+              controller: _passwordController,
             ),
-            
+
             const SizedBox(height: 12),
 
             // Login button
             MyButton(
               text: "Login",
               
+              onTap: () => login(context), // Use lowercase login method
             ),
 
             const SizedBox(height: 12),
@@ -85,7 +102,7 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12,
                       color: Theme.of(context).colorScheme.secondary,
-                      fontWeight: FontWeight.bold
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

@@ -1,8 +1,10 @@
+import 'package:chat/services/authentication/auth_service.dart';
 import 'package:chat/components/my_button.dart';
 import 'package:chat/components/my_textfield.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
+
    RegisterPage({super.key,required this.onTap});
 
   final TextEditingController _emailController = TextEditingController();
@@ -12,8 +14,34 @@ class RegisterPage extends StatelessWidget {
 //tap to go to register
   final void Function()? onTap;
   //register function
-  void register() {
-  
+  void register(BuildContext context) {
+    final _auth = AuthService();
+    //check if passwords match
+    if(_passwordController.text == _confpasswordController.text)
+    {
+      try{
+        _auth.signUpWithEmailAndPassword(_emailController.text, _passwordController.text);
+      }
+      catch(e){
+        print(e);
+        showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+      //show error
+      }
+    }
+    else{
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Passwords do not match"),
+        ),
+      );
+    }
+
   }
 
   @override
@@ -66,10 +94,12 @@ class RegisterPage extends StatelessWidget {
             ),
             // Login button
             const SizedBox(height: 12),
-            MyButton(
+            
+             MyButton(
               text: "Register",
-              
+              onTap: () => register(context), // Use lowercase login method
             ),
+
 
             const SizedBox(height: 12),
 

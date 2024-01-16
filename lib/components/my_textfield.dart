@@ -13,10 +13,12 @@ class MyTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
         obscureText: hintText == "Password" ? true : false,
+        controller: controller,//this was the whole point
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.tertiary,
+
             ),
           ),
           focusedBorder: OutlineInputBorder(
