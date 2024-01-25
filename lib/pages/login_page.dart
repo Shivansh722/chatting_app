@@ -1,7 +1,7 @@
-import 'package:chat/services/authentication/auth_service.dart';
+import 'package:flutter/material.dart';
 import 'package:chat/components/my_button.dart';
 import 'package:chat/components/my_textfield.dart';
-import 'package:flutter/material.dart';
+import 'package:chat/services/authentication/auth_service.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key, required this.onTap}) : super(key: key);
@@ -63,6 +63,7 @@ class LoginPage extends StatelessWidget {
             MyTextField(
               hintText: "Email",
               controller: _emailController,
+                obscureText: false,
             ),
 
             const SizedBox(height: 12),
@@ -71,6 +72,7 @@ class LoginPage extends StatelessWidget {
             MyTextField(
               hintText: "Password",
               controller: _passwordController,
+              obscureText: true,
             ),
 
             const SizedBox(height: 12),

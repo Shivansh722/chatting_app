@@ -1,7 +1,7 @@
-import 'package:chat/services/authentication/auth_service.dart';
+import 'package:flutter/material.dart';
 import 'package:chat/components/my_button.dart';
 import 'package:chat/components/my_textfield.dart';
-import 'package:flutter/material.dart';
+import 'package:chat/services/authentication/auth_service.dart';
 
 class RegisterPage extends StatelessWidget {
 
@@ -76,6 +76,7 @@ class RegisterPage extends StatelessWidget {
             MyTextField(
               hintText: "Email",
               controller : _emailController,
+              obscureText: false,
             ),
             
             const SizedBox(height: 12),
@@ -84,6 +85,7 @@ class RegisterPage extends StatelessWidget {
             MyTextField(
               hintText: "Password",
               controller : _passwordController,
+              obscureText: true,
             ),
             
             const SizedBox(height: 12),
@@ -91,6 +93,7 @@ class RegisterPage extends StatelessWidget {
             MyTextField(
               hintText: "Confirm Password",
               controller : _confpasswordController,
+              obscureText: true,
             ),
             // Login button
             const SizedBox(height: 12),
