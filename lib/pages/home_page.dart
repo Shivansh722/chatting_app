@@ -21,9 +21,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Chat App",
-          style: TextStyle(
-            color: Colors.white,
-          ),
+          
         ),
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.grey,

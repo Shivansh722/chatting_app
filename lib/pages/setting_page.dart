@@ -11,9 +11,7 @@ class SettingPage extends StatelessWidget {
         title: Text(
           
           "Setting",
-          style: TextStyle(
-            color: Colors.white,
-          ),
+         
         ),
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.grey,

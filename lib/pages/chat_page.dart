@@ -36,9 +36,7 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           receiverEmail,
-          style: TextStyle(
-            color: Colors.white,
-          ),
+         
         ),
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.grey,
